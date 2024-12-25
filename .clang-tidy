@@ -1,0 +1,19 @@
+Checks: >
+  -*,
+  bugprone-*,
+  modernize-*,
+  readability-*,
+  cppcoreguidelines-*,
+  performance-*,
+  clang-analyzer-*,
+  cert-*,
+  misc-*,
+  google-*,
+  llvm-*,
+  hicpp-*
+
+CheckOptions:
+  - key: modernize-use-nullptr.NullMacros
+    value: 'Google'
+  - key: modernize-use-override.IgnoreDestructors
+    value: true
