@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# run_tests.sh
+# Usage: ./run_tests.sh
+
 # Create buiod directory
 if [ ! -d "build" ]; then
     mkdir build
