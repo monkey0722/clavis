@@ -8,6 +8,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 file(GLOB CORE_SOURCES src/*.cpp)
 # file(GLOB MATH_SOURCES src/math/*.cpp)
 
+# Collect Test Files
+file(GLOB TEST_SOURCES tests/*.cpp)
+
 # Integrate All Sources
 set(SOURCES ${CORE_SOURCES} ${MATH_SOURCES})
 
@@ -19,7 +22,8 @@ find_package(GTest REQUIRED)
 enable_testing()
 
 # Test Execution File
-add_executable(algorithm_test tests/sample_test.cpp)
+add_executable(algorithm_test ${TEST_SOURCES})
+# add_executable(algorithm_test tests/sample_test.cpp)
 # add_executable(algorithm_tests
 #     tests/math_test.cpp
 #     tests/utility_test.cpp
