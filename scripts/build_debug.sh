@@ -4,13 +4,13 @@
 # Usage: ./build_debug.sh <source_file> [options]
 
 print_usage() {
-echo "Usage: $0 <source_file> [options]"
-echo "Options:"
-echo "  -c, --clean     Remove old executable before building"
-echo "  -r, --run       Run program after building" 
-echo "  -h, --help      Show this help message"
-echo ""
-echo "Example: $0 sort.cpp -r"
+  echo "Usage: $0 <source_file> [options]"
+  echo "Options:"
+  echo "  -c, --clean     Remove old executable before building"
+  echo "  -r, --run       Run program after building" 
+  echo "  -h, --help      Show this help message"
+  echo ""
+  echo "Example: $0 sort.cpp -r"
 }
 
 # Set default values 
@@ -20,13 +20,13 @@ RUN_AFTER_BUILD=0
 # Create build directory
 BUILD_DIR="build"
 if [ ! -d "$BUILD_DIR" ]; then
-mkdir -p "$BUILD_DIR"
+  mkdir -p "$BUILD_DIR"
 fi
 
 # Show usage if no arguments
 if [ $# -eq 0 ]; then
-print_usage
-exit 1
+  print_usage
+  exit 1
 fi
 
 SOURCE_FILE=$1
@@ -60,8 +60,8 @@ done
 
 # Cleanup
 if [ $CLEAN_MODE -eq 1 ]; then
-echo "Removing old executable..."
-rm -f "$OUTPUT_FILE"
+  echo "Removing old executable..."
+  rm -f "$OUTPUT_FILE"
 fi
 
 # Run debug build
@@ -72,6 +72,6 @@ echo "Build complete: $OUTPUT_FILE"
 
 # Run after build if requested
 if [ $RUN_AFTER_BUILD -eq 1 ]; then
-echo "Running program..."
-"$OUTPUT_FILE"
+  echo "Running program..."
+  "$OUTPUT_FILE"
 fi
