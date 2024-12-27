@@ -7,7 +7,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 # Collect Source Files
 file(GLOB CORE_SOURCES
   src/*.cpp
-  # src/sorting/*.cpp
   src/sorting/*.hpp
 )
 
