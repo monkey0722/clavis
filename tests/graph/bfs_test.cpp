@@ -1,4 +1,4 @@
-#include "../src/bfs.hpp"
+#include "../src/graph/bfs.hpp"
 
 #include <gtest/gtest.h>
 
@@ -25,7 +25,7 @@ TEST(BFSTest, ShortestPath) {
 
   // Add an edge as an unoriented graph
   bfs.addEdge(0, 1);
-  bfs.addEdge(1, 0);  // Follow the opposite direction too
+  bfs.addEdge(1, 0);
   bfs.addEdge(0, 2);
   bfs.addEdge(2, 0);
   bfs.addEdge(0, 3);

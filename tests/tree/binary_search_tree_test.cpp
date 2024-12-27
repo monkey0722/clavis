@@ -1,4 +1,4 @@
-#include "../src/binary_search_tree.hpp"
+#include "../src/tree/binary_search_tree.hpp"
 
 #include <gtest/gtest.h>
 
@@ -45,14 +45,14 @@ TEST(BinarySearchTreeTest, Removal) {
   bst.insert(1);
   bst.insert(9);
 
-  EXPECT_TRUE(bst.remove(3));  // Remove node with one child
+  EXPECT_TRUE(bst.remove(3));
   EXPECT_FALSE(bst.contains(3));
   EXPECT_TRUE(bst.contains(1));
 
-  EXPECT_TRUE(bst.remove(5));  // Remove root node
+  EXPECT_TRUE(bst.remove(5));
   EXPECT_FALSE(bst.contains(5));
 
-  EXPECT_FALSE(bst.remove(10));  // Remove non-existent node
+  EXPECT_FALSE(bst.remove(10));
 }
 
 TEST(BinarySearchTreeTest, Traversal) {

@@ -26,13 +26,24 @@ make
 # Test execution
 if [ -f "./algorithm_test" ]; then
   if [ -n "$1" ]; then
-    test_file=$(basename "$1") # Get filename without path
-    test_name=$(echo "$test_file" | sed 's/_test\.cpp$//') # Remove _test.cpp
-    # Convert snake_case to CamelCase
-    test_suite=$(echo "$test_name" | perl -pe 's/(^|_)./uc($&)/ge; s/_//g')"Test"
-
-    echo "Running test suite: $test_suite"
-    ./algorithm_test --gtest_filter="$test_suite.*"
+    # Get the base name and remove all extensions
+    base_name=$(basename "$1" | sed 's/\.[^.]*$//')
+    
+    # Convert to CamelCase
+    # First, if there's no underscore, capitalize all parts
+    if [[ $base_name != *"_"* ]]; then
+      test_suite=$(echo "$base_name" | sed -r 's/(^|_)([a-z])/\U\2/g')"Test"
+    else
+      # Otherwise, handle snake_case conversion
+      test_suite=$(echo "$base_name" | perl -pe 's/(^|_)([a-z])/\u$2/g')"Test"
+    fi
+    
+    echo "Input path: $1"
+    echo "Base name: $base_name"
+    echo "Test suite: $test_suite"
+    
+    # Run tests with more complete output
+    ./algorithm_test --gtest_filter="$test_suite.*" --gtest_also_run_disabled_tests
   else
     ./algorithm_test
   fi

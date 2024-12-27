@@ -1,4 +1,4 @@
-#include "../src/union_find.hpp"
+#include "../src/data_structure/union_find.hpp"
 
 #include <gtest/gtest.h>
 
