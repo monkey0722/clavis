@@ -2,11 +2,13 @@
 #define RADIX_SORT_HPP
 
 #include <concepts>
+#include <iostream>
 #include <ranges>
 #include <span>
 
 template <std::integral T>
 void radixSort(std::vector<T>& arr) {
+  std::cout << "Starting radixSort with array size: " << arr.size() << std::endl;
   if (arr.empty()) {
     return;
   };
@@ -15,6 +17,7 @@ void radixSort(std::vector<T>& arr) {
   std::span s{arr};
 
   for (T exp = 1; max / exp > 0; exp *= 10) {
+    std::cout << "Processing digit position: " << exp << std::endl;
     std::vector<T> output(s.size());
     std::array<size_t, 10> count{};
 
@@ -29,8 +32,8 @@ void radixSort(std::vector<T>& arr) {
       output[count[idx] - 1] = *it;
       count[idx]--;
     }
-
     std::ranges::move(output, arr.begin());
+    std::cout << "Radix sort complete" << std::endl;
   }
 }
 

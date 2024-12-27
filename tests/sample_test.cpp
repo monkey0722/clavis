@@ -1,6 +1,6 @@
-#include <gtest/gtest.h>
-
 #include "../src/sample.h"
+
+#include <gtest/gtest.h>
 
 // Extract even numbers
 TEST(FilterEvenNumbersTest, BasicTest) {

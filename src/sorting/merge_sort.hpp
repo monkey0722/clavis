@@ -29,13 +29,14 @@ void merge(std::span<T> arr, size_t left, size_t mid, size_t right) {
 
 template <Mergeable T>
 void mergeSortImpl(std::span<T> arr, size_t left, size_t right) {
-  std::cout << "MergeSort: left=" << left << " right=" << right << std::endl;
-  if (left < right) {
-    size_t mid = (left + right) / 2;
-    mergeSortImpl(arr, left, mid);
-    mergeSortImpl(arr, mid + 1, right);
-    merge(arr, left, mid, right);
+  if (left >= arr.size() || right >= arr.size() || left >= right) {
+    return;
   }
+  std::cout << "MergeSort: left=" << left << " right=" << right << std::endl;
+  size_t mid = left + (right - left) / 2;
+  mergeSortImpl(arr, left, mid);
+  mergeSortImpl(arr, mid + 1, right);
+  merge(arr, left, mid, right);
 }
 
 template <Mergeable T>
