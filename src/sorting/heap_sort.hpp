@@ -2,6 +2,7 @@
 #define HEAP_SORT_HPP
 
 #include <concepts>
+#include <iostream>
 #include <ranges>
 
 #include "sorting_concepts.hpp"

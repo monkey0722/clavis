@@ -2,6 +2,7 @@
 #define MERGE_SORT_HPP
 
 #include <concepts>
+#include <iostream>
 #include <memory>
 #include <span>
 
