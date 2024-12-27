@@ -5,7 +5,7 @@ if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
   echo "Usage: ./run_tests.sh [test_name]"
   echo "Options:"
   echo "  --help, -h    Show this help"
-  echo "  test_name     Run specific test (e.g., ./tests/sorting/shell_sort_test.cpp)"
+  echo "  test_name     Run specific test (e.g., ./tests/sorting/shell_sort_test)"
   exit 0
 fi
 
