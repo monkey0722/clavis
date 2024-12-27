@@ -20,10 +20,4 @@ void bubbleSort(std::vector<T>& arr) {
   }
 }
 
-// int main() {
-//   std::vector<int> arr = {64, 34, 25, 12, 22, 11, 90};
-//   bubbleSort(arr);
-//   return 0;
-// }
-
 #endif // BUBBLE_SORT_HPP
