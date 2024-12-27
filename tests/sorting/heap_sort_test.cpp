@@ -1,33 +1,29 @@
+#include "../../src/sorting/heap_sort.hpp"
+
 #include <gtest/gtest.h>
 
-#include "../src/bubble_sort.hpp"
-
-TEST(BubbleSortTest, SortsIntegerArray) {
+TEST(HeapSortTest, SortsIntegerArray) {
   std::vector<int> arr = {64, 34, 25, 12, 22, 11, 90};
   std::vector<int> expected = {11, 12, 22, 25, 34, 64, 90};
-
-  bubbleSort(arr);
-
+  heapSort(arr);
   EXPECT_EQ(arr, expected);
 }
 
-TEST(BubbleSortTest, SortsEmptyArray) {
+TEST(HeapSortTest, SortsEmptyArray) {
   std::vector<int> arr;
-  bubbleSort(arr);
+  heapSort(arr);
   EXPECT_TRUE(arr.empty());
 }
 
-TEST(BubbleSortTest, SortsSingleElementArray) {
+TEST(HeapSortTest, SortsSingleElementArray) {
   std::vector<int> arr = {1};
-  bubbleSort(arr);
+  heapSort(arr);
   EXPECT_EQ(arr, std::vector<int>{1});
 }
 
-TEST(BubbleSortTest, HandlesRepeatedElements) {
+TEST(HeapSortTest, HandlesRepeatedElements) {
   std::vector<int> arr = {3, 1, 4, 1, 5};
   std::vector<int> expected = {1, 1, 3, 4, 5};
-
-  bubbleSort(arr);
-
+  heapSort(arr);
   EXPECT_EQ(arr, expected);
 }

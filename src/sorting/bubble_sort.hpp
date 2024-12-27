@@ -5,10 +5,7 @@
 #include <version>
 #include <iostream>
 
-template <typename T>
-concept Sortable = requires(T a, T b) {
-  { a < b } -> std::convertible_to<bool>;
-};
+#include "sorting_concepts.hpp"
 
 template <Sortable T>
 void bubbleSort(std::vector<T>& arr) {

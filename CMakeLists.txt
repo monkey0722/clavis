@@ -5,14 +5,20 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Collect Source Files
-file(GLOB CORE_SOURCES src/*.cpp)
-# file(GLOB MATH_SOURCES src/math/*.cpp)
+file(GLOB CORE_SOURCES
+  src/*.cpp
+  # src/sorting/*.cpp
+  src/sorting/*.hpp
+)
 
 # Collect Test Files
-file(GLOB TEST_SOURCES tests/*.cpp)
+file(GLOB TEST_SOURCES
+  tests/*.cpp
+  tests/sorting/*.cpp
+)
 
 # Integrate All Sources
-set(SOURCES ${CORE_SOURCES} ${MATH_SOURCES})
+set(SOURCES ${CORE_SOURCES})
 
 # Create Library
 add_library(algorithm ${SOURCES})
@@ -23,11 +29,7 @@ enable_testing()
 
 # Test Execution File
 add_executable(algorithm_test ${TEST_SOURCES})
-# add_executable(algorithm_test tests/sample_test.cpp)
-# add_executable(algorithm_tests
-#     tests/math_test.cpp
-#     tests/utility_test.cpp
-# )
+
 target_link_libraries(algorithm_test algorithm GTest::GTest GTest::Main)
 
 # Register Test
