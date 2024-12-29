@@ -18,7 +18,7 @@ fi
 cd build
 
 # CMake configuration
-cmake ..
+cmake -DCMAKE_CXX_STANDARD=20 -DCMAKE_CXX_STANDARD_REQUIRED=ON ..
 
 # Build
 make
