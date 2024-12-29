@@ -4,7 +4,6 @@
 #include <concepts>
 #include <iostream>
 #include <queue>
-#include <ranges>
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
