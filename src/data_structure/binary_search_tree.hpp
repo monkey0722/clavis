@@ -27,7 +27,6 @@ private:
 public:
   BinarySearchTree() = default;
 
-  // 要素の挿入
   void insert(const T& value) {
     if (!root) {
       std::cout << "Creating root node with value: " << value << std::endl;
@@ -56,13 +55,12 @@ public:
         }
         current = current->right.get();
       } else {
-        // 重複は無視
+        // Duplicates are ignored.
         return;
       }
     }
   }
 
-  // 要素の検索
   [[nodiscard]] bool contains(const T& value) const {
     const Node* current = root.get();
     while (current) {
@@ -77,7 +75,6 @@ public:
     return false;
   }
 
-  // 最小値の取得
   [[nodiscard]] std::optional<T> minimum() const {
     if (!root) return std::nullopt;
 
@@ -88,7 +85,6 @@ public:
     return current->value;
   }
 
-  // 最大値の取得
   [[nodiscard]] std::optional<T> maximum() const {
     if (!root) return std::nullopt;
 
@@ -99,7 +95,6 @@ public:
     return current->value;
   }
 
-  // 要素の削除
   bool remove(const T& value) {
     std::cout << "Attempting to remove value: " << value << std::endl;
 
@@ -107,7 +102,7 @@ public:
     Node* current = root.get();
     bool isLeftChild = false;
 
-    // 削除対象ノードの検索
+    // Search for the node to be deleted.
     while (current && current->value != value) {
       parent = current;
       if (value < current->value) {
@@ -121,7 +116,7 @@ public:
 
     if (!current) return false;
 
-    // Case 1: 子ノードなし
+    // Case　1:　No child nodes.
     if (!current->left && !current->right) {
       if (!parent) {
         root.reset();
@@ -131,7 +126,7 @@ public:
         parent->right.reset();
       }
     }
-    // Case 2: 片方の子ノードのみ
+    // Case 2: One of the child nodes.
     else if (!current->left) {
       if (!parent) {
         root = std::move(current->right);
@@ -149,7 +144,7 @@ public:
         parent->right = std::move(current->left);
       }
     }
-    // Case 3: 両方の子ノードあり
+    // Case 3: Both child nodes.
     else {
       Node* successor = current->right.get();
       Node* successorParent = current;
@@ -167,13 +162,12 @@ public:
         successorParent->left = std::move(successor->right);
       }
     }
-
     std::cout << "Successfully removed value: " << value << std::endl;
     nodeCount--;
     return true;
   }
 
-  // 中順走査（昇順）
+  // Middle-order scan (ascending order).
   void inorderTraversal(const std::function<void(const T&)>& visitor) const {
     std::stack<const Node*> stack;
     const Node* current = root.get();
@@ -183,17 +177,14 @@ public:
         stack.push(current);
         current = current->left.get();
       }
-
       current = stack.top();
       stack.pop();
-
       visitor(current->value);
-
       current = current->right.get();
     }
   }
 
-  // 幅優先走査
+  // Width-priority run
   void levelOrderTraversal(const std::function<void(const T&)>& visitor) const {
     if (!root) return;
 
@@ -214,9 +205,7 @@ public:
       }
     }
   }
-
   [[nodiscard]] size_t size() const noexcept { return nodeCount; }
-
   [[nodiscard]] bool empty() const noexcept { return nodeCount == 0; }
 };
 

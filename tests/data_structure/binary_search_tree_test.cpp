@@ -1,4 +1,4 @@
-#include "../src/tree/binary_search_tree.hpp"
+#include "../src/data_structure/binary_search_tree.hpp"
 
 #include <gtest/gtest.h>
 
