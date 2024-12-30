@@ -1,4 +1,4 @@
-#include "../src/tree/max_heap.hpp"
+#include "../src/data_structure/max_heap.hpp"
 
 #include <gtest/gtest.h>
 

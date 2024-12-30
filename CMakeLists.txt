@@ -8,7 +8,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 file(GLOB CORE_SOURCES
   src/*.cpp
   src/graph/*.hpp
-  src/tree/*.hpp
   src/data_structure/*.hpp
   src/sorting/*.hpp
 )
@@ -17,7 +16,6 @@ file(GLOB CORE_SOURCES
 file(GLOB TEST_SOURCES
   tests/*.cpp
   tests/graph/*.cpp
-  tests/tree/*.cpp
   tests/data_structure/*.cpp
   tests/sorting/*.cpp
 )
@@ -39,7 +37,6 @@ add_executable(algorithm_test ${TEST_SOURCES})
 target_include_directories(algorithm_test PRIVATE
   ${CMAKE_SOURCE_DIR}/src
   ${CMAKE_SOURCE_DIR}/src/graph
-  ${CMAKE_SOURCE_DIR}/src/tree
   ${CMAKE_SOURCE_DIR}/src/data_structure
   ${CMAKE_SOURCE_DIR}/src/sorting
 )
