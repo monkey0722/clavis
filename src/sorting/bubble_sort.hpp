@@ -2,8 +2,9 @@
 #define BUBBLE_SORT_HPP
 
 #include <concepts>
-#include <version>
 #include <iostream>
+#include <vector>
+#include <version>
 
 #include "sorting_concepts.hpp"
 

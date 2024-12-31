@@ -4,6 +4,7 @@
 #include <concepts>
 #include <iostream>
 #include <memory>
+#include <ranges>
 #include <span>
 
 #include "sorting_concepts.hpp"
