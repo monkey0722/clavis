@@ -2,6 +2,7 @@
 #define BINARY_SEARCH_TREE_HPP
 
 #include <concepts>
+#include <functional>
 #include <iostream>
 #include <memory>
 #include <optional>
