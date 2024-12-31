@@ -24,7 +24,7 @@ cmake -DCMAKE_CXX_STANDARD=20 -DCMAKE_CXX_STANDARD_REQUIRED=ON ..
 make
 
 # Test execution
-if [ -f "./algorithm_test" ]; then
+if [ -f "./clavis_algorithm_test" ]; then
   if [ -n "$1" ]; then
     # Get the base name and remove all extensions
     base_name=$(basename "$1" | sed 's/\.[^.]*$//')
@@ -43,9 +43,9 @@ if [ -f "./algorithm_test" ]; then
     echo "Test suite: $test_suite"
     
     # Run tests with more complete output
-    ./algorithm_test --gtest_filter="$test_suite.*" --gtest_also_run_disabled_tests
+    ./clavis_algorithm_test --gtest_filter="$test_suite.*" --gtest_also_run_disabled_tests
   else
-    ./algorithm_test
+    ./clavis_algorithm_test
   fi
 else
   echo "Test executable not found"
