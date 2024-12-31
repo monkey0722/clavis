@@ -1,10 +1,11 @@
 #ifndef RADIX_SORT_HPP
 #define RADIX_SORT_HPP
 
+#include <algorithm>
 #include <concepts>
 #include <iostream>
-#include <ranges>
 #include <span>
+#include <vector>
 
 template <std::integral T>
 void radixSort(std::vector<T>& arr) {
@@ -12,8 +13,11 @@ void radixSort(std::vector<T>& arr) {
   if (arr.empty()) {
     return;
   };
-
-  auto max = std::ranges::max(arr);
+  /*
+   * Commented out because it causes errors in the CI environment.
+   ** auto max = std::ranges::max(arr);
+   */
+  auto max = *std::max_element(arr.begin(), arr.end());
   std::span s{arr};
 
   for (T exp = 1; max / exp > 0; exp *= 10) {
@@ -32,7 +36,11 @@ void radixSort(std::vector<T>& arr) {
       output[count[idx] - 1] = *it;
       count[idx]--;
     }
-    std::ranges::move(output, arr.begin());
+    /*
+     * Commented out because it causes errors in the CI environment.
+     ** std::ranges::move(output, arr.begin());
+     */
+    std::move(output.begin(), output.end(), arr.begin());
     std::cout << "Radix sort complete" << std::endl;
   }
 }

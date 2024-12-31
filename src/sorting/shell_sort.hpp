@@ -5,6 +5,7 @@
 #include <iostream>
 #include <ranges>
 #include <span>
+#include <vector>
 
 #include "sorting_concepts.hpp"
 

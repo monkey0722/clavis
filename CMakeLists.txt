@@ -24,24 +24,21 @@ file(GLOB TEST_SOURCES
 set(SOURCES ${CORE_SOURCES})
 
 # Create Library
-add_library(algorithm ${SOURCES})
+add_library(clavis_algorithm ${SOURCES})
 
 # Google Test Setup
 find_package(GTest REQUIRED)
 enable_testing()
 
 # Test Execution File
-add_executable(algorithm_test ${TEST_SOURCES})
+add_executable(clavis_algorithm_test ${TEST_SOURCES})
 
 # Include Directories
-target_include_directories(algorithm_test PRIVATE
+target_include_directories(clavis_algorithm_test PRIVATE
   ${CMAKE_SOURCE_DIR}/src
-  ${CMAKE_SOURCE_DIR}/src/graph
-  ${CMAKE_SOURCE_DIR}/src/data_structure
-  ${CMAKE_SOURCE_DIR}/src/sorting
 )
 
-target_link_libraries(algorithm_test algorithm GTest::GTest GTest::Main)
+target_link_libraries(clavis_algorithm_test clavis_algorithm GTest::GTest GTest::Main)
 
 # Register Test
-add_test(NAME AlgorithmTest COMMAND algorithm_test)
+add_test(NAME AlgorithmTest COMMAND clavis_algorithm_test)

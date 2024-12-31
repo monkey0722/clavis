@@ -1,10 +1,12 @@
 #ifndef MERGE_SORT_HPP
 #define MERGE_SORT_HPP
 
+#include <algorithm>
 #include <concepts>
 #include <iostream>
 #include <memory>
 #include <span>
+#include <vector>
 
 #include "sorting_concepts.hpp"
 
@@ -21,10 +23,15 @@ void merge(std::span<T> arr, size_t left, size_t mid, size_t right) {
       temp[k++] = std::move(arr[j++]);
     }
   }
-
-  std::ranges::move(arr.subspan(i, mid - i + 1), temp.begin() + k);
-  std::ranges::move(arr.subspan(j, right - j + 1), temp.begin() + k);
-  std::ranges::move(temp, arr.begin() + left);
+  /*
+   * Commented out because it causes errors in the CI environment.
+   ** std::ranges::move(arr.subspan(i, mid - i + 1), temp.begin() + k);
+   ** std::ranges::move(arr.subspan(j, right - j + 1), temp.begin() + k);
+   ** std::ranges::move(temp, arr.begin() + left);
+   */
+  std::move(arr.begin() + i, arr.begin() + i + (mid - i + 1), temp.begin() + k);
+  std::move(arr.begin() + j, arr.begin() + j + (right - j + 1), temp.begin() + k);
+  std::move(temp.begin(), temp.end(), arr.begin() + left);
 }
 
 template <Mergeable T>
