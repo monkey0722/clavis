@@ -5,6 +5,7 @@
 #include <iostream>
 #include <memory>
 #include <span>
+#include <vector>
 
 #include "sorting_concepts.hpp"
 

@@ -5,6 +5,7 @@
 #include <iostream>
 #include <ranges>
 #include <span>
+#include <vector>
 
 template <std::integral T>
 void radixSort(std::vector<T>& arr) {

@@ -4,6 +4,7 @@
 #include <concepts>
 #include <iostream>
 #include <ranges>
+#include <vector>
 
 #include "sorting_concepts.hpp"
 
