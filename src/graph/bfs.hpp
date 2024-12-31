@@ -1,6 +1,7 @@
 #ifndef BFS_HPP
 #define BFS_HPP
 
+#include <algorithm>
 #include <concepts>
 #include <iostream>
 #include <queue>
@@ -107,7 +108,7 @@ public:
         current = parent[current];
       }
       path.push_back(start);
-      std::ranges::reverse(path);
+      std::reverse(path.begin(), path.end());
     }
 
     return path;
