@@ -3,8 +3,8 @@
         {
             "name": "Mac",
             "includePath": [
-                "${workspaceFolder}/**", // Overall project path
-                "/opt/homebrew/include" // M1~ Standard path for Mac
+                "${workspaceFolder}/**",
+                "/opt/homebrew/include"
             ],
             "defines": [],
             "macFrameworkPath": [
