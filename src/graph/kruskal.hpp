@@ -15,20 +15,18 @@ struct KruskalEdge {
   long long weight;
 
   // Operator for sorting edges by weight
-  bool operator<(const KruskalEdge& other) const {
-    return weight < other.weight;
-  }
+  bool operator<(const KruskalEdge& other) const { return weight < other.weight; }
 };
 
 /**
  * @brief Disjoint Set Union (DSU) data structure for Kruskal's algorithm
  */
 class DisjointSet {
-private:
+ private:
   std::vector<int> parent;
   std::vector<int> rank;
 
-public:
+ public:
   /**
    * @brief Initialize a DSU with n elements
    * @param n Number of elements
@@ -117,8 +115,6 @@ std::pair<std::vector<KruskalEdge>, long long> kruskal(int n, std::vector<Kruska
  * @param mst The MST edges
  * @return True if the graph is connected, false otherwise
  */
-bool isConnected(int n, const std::vector<KruskalEdge>& mst) {
-  return mst.size() == n - 1;
-}
+bool isConnected(int n, const std::vector<KruskalEdge>& mst) { return mst.size() == n - 1; }
 
 #endif  // KRUSKAL_HPP

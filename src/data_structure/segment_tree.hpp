@@ -12,7 +12,7 @@
  */
 template <typename T>
 class SegmentTree {
-private:
+ private:
   int n;                      // Number of leaves
   std::vector<T> tree;        // Container to store the segment tree
   std::function<T(T, T)> op;  // Binary operation to merge intervals
@@ -34,7 +34,7 @@ private:
     }
   }
 
-public:
+ public:
   /**
    * @brief Constructor
    *

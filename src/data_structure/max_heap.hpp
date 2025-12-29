@@ -8,7 +8,7 @@
 // This class provides the main operations of a max-heap.
 template <typename T>
 class MaxHeap {
-public:
+ public:
   MaxHeap() = default;
 
   // Insert a new value into the heap
@@ -49,7 +49,7 @@ public:
   // Returns the number of elements in the heap
   std::size_t size() const { return data_.size(); }
 
-private:
+ private:
   std::vector<T> data_;
 
   // Restore the heap property by moving the element at index 'idx'

@@ -11,7 +11,7 @@ template <typename T>
 concept Integral = std::is_integral_v<T>;
 
 class UnionFind {
-private:
+ private:
   std::vector<int> parent;
   std::vector<int> rank;
   int groupCount;
@@ -20,7 +20,7 @@ private:
     return x >= 0 && static_cast<size_t>(x) < parent.size();
   }
 
-public:
+ public:
   explicit UnionFind(size_t size)
       : parent(size), rank(size, 0), groupCount(static_cast<int>(size)) {
     std::iota(parent.begin(), parent.end(), 0);

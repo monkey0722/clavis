@@ -22,4 +22,4 @@ void bubbleSort(std::vector<T>& arr) {
   }
 }
 
-#endif // BUBBLE_SORT_HPP
+#endif  // BUBBLE_SORT_HPP

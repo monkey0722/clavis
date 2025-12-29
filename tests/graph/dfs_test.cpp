@@ -88,13 +88,13 @@ TEST(DFSTest, TopologicalSort) {
   auto result = dfs.topologicalSort();
 
   ASSERT_EQ(result.size(), 6);
-  
+
   // Check that for each edge (u, v), u comes before v in the topological sort
   std::unordered_map<int, int> position;
   for (size_t i = 0; i < result.size(); ++i) {
     position[result[i]] = i;
   }
-  
+
   EXPECT_LT(position[5], position[2]);
   EXPECT_LT(position[5], position[0]);
   EXPECT_LT(position[4], position[0]);

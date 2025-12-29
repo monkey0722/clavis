@@ -17,4 +17,4 @@ concept Mergeable = Sortable<T> && std::copyable<T>;
 template <typename T>
 concept Heapable = Sortable<T> && std::swappable<T>;
 
-#endif  //　SORTING_CONCEPTS_HPP
+#endif  // 　SORTING_CONCEPTS_HPP

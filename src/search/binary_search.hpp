@@ -10,14 +10,14 @@ namespace search {
 
 /**
  * @brief Binary search algorithm for finding an element in a sorted array
- * 
+ *
  * @tparam T Type of elements in the array (must be comparable)
  * @param arr Sorted array to search in
  * @param target Element to search for
  * @return Index of the target element if found, -1 otherwise
  */
 template <typename T>
-requires std::totally_ordered<T>
+  requires std::totally_ordered<T>
 int binary_search(const std::vector<T>& arr, const T& target) {
   int left = 0;
   int right = arr.size() - 1;
@@ -39,14 +39,15 @@ int binary_search(const std::vector<T>& arr, const T& target) {
 
 /**
  * @brief Lower bound binary search - finds the first element not less than the target
- * 
+ *
  * @tparam T Type of elements in the array (must be comparable)
  * @param arr Sorted array to search in
  * @param target Element to search for
- * @return Index of the first element not less than target, or arr.size() if all elements are less than target
+ * @return Index of the first element not less than target, or arr.size() if all elements are less
+ * than target
  */
 template <typename T>
-requires std::totally_ordered<T>
+  requires std::totally_ordered<T>
 int lower_bound(const std::vector<T>& arr, const T& target) {
   int left = 0;
   int right = arr.size();  // Note: right is arr.size(), not arr.size() - 1
@@ -66,14 +67,14 @@ int lower_bound(const std::vector<T>& arr, const T& target) {
 
 /**
  * @brief Upper bound binary search - finds the first element greater than the target
- * 
+ *
  * @tparam T Type of elements in the array (must be comparable)
  * @param arr Sorted array to search in
  * @param target Element to search for
  * @return Index of the first element greater than target, or arr.size() if no such element exists
  */
 template <typename T>
-requires std::totally_ordered<T>
+  requires std::totally_ordered<T>
 int upper_bound(const std::vector<T>& arr, const T& target) {
   int left = 0;
   int right = arr.size();  // Note: right is arr.size(), not arr.size() - 1
@@ -93,15 +94,16 @@ int upper_bound(const std::vector<T>& arr, const T& target) {
 
 /**
  * @brief Binary search on a predicate function
- * 
+ *
  * @tparam T Type of elements in the search space
  * @param left Left boundary of the search space (inclusive)
  * @param right Right boundary of the search space (exclusive)
  * @param predicate Function that returns true for elements that satisfy the condition
- * @return The first element in the range [left, right) for which predicate returns true, or right if none exists
+ * @return The first element in the range [left, right) for which predicate returns true, or right
+ * if none exists
  */
 template <typename T>
-requires std::integral<T>
+  requires std::integral<T>
 T binary_search_predicate(T left, T right, const std::function<bool(T)>& predicate) {
   while (left < right) {
     T mid = left + (right - left) / 2;
@@ -116,7 +118,7 @@ T binary_search_predicate(T left, T right, const std::function<bool(T)>& predica
   return left;  // Returns right if no element satisfies the predicate
 }
 
-} // namespace search
-} // namespace clavis
+}  // namespace search
+}  // namespace clavis
 
 #endif  // BINARY_SEARCH_HPP

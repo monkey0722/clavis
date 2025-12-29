@@ -7,7 +7,7 @@
 // Fenwick Tree (Binary Indexed Tree) for handling
 // prefix sums over a 1D array with point updates.
 class FenwickTree {
-public:
+ public:
   explicit FenwickTree(std::size_t n) : size_(n), fenw_(n + 1, 0) {}
 
   // Add 'delta' to element at index 'idx'
@@ -48,7 +48,7 @@ public:
     return query(right) - (left == 0 ? 0 : query(left - 1));
   }
 
-private:
+ private:
   std::size_t size_;
   std::vector<int> fenw_;
 };
