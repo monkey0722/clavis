@@ -1,6 +1,7 @@
 #include "../src/search/binary_search.hpp"
 
 #include <gtest/gtest.h>
+
 #include <string>
 #include <vector>
 
@@ -93,12 +94,12 @@ TEST_F(BinarySearchTest, StringSearch) {
  */
 TEST_F(BinarySearchTest, LowerBound) {
   // Test with integers
-  EXPECT_EQ(clavis::search::lower_bound(sortedInts, -20), 0);  // First element
-  EXPECT_EQ(clavis::search::lower_bound(sortedInts, -10), 0);  // Existing element
-  EXPECT_EQ(clavis::search::lower_bound(sortedInts, -7), 1);   // Between elements
-  EXPECT_EQ(clavis::search::lower_bound(sortedInts, 3), 5);    // Between elements
-  EXPECT_EQ(clavis::search::lower_bound(sortedInts, 100), 9);  // Last element
-  EXPECT_EQ(clavis::search::lower_bound(sortedInts, 200), 10); // Beyond last element
+  EXPECT_EQ(clavis::search::lower_bound(sortedInts, -20), 0);   // First element
+  EXPECT_EQ(clavis::search::lower_bound(sortedInts, -10), 0);   // Existing element
+  EXPECT_EQ(clavis::search::lower_bound(sortedInts, -7), 1);    // Between elements
+  EXPECT_EQ(clavis::search::lower_bound(sortedInts, 3), 5);     // Between elements
+  EXPECT_EQ(clavis::search::lower_bound(sortedInts, 100), 9);   // Last element
+  EXPECT_EQ(clavis::search::lower_bound(sortedInts, 200), 10);  // Beyond last element
 
   // Test with empty vector
   std::vector<int> empty;
@@ -110,12 +111,12 @@ TEST_F(BinarySearchTest, LowerBound) {
  */
 TEST_F(BinarySearchTest, UpperBound) {
   // Test with integers
-  EXPECT_EQ(clavis::search::upper_bound(sortedInts, -20), 0);  // Before first element
-  EXPECT_EQ(clavis::search::upper_bound(sortedInts, -10), 1);  // Existing element
-  EXPECT_EQ(clavis::search::upper_bound(sortedInts, -7), 1);   // Between elements
-  EXPECT_EQ(clavis::search::upper_bound(sortedInts, 3), 5);    // Between elements
-  EXPECT_EQ(clavis::search::upper_bound(sortedInts, 100), 10); // Last element
-  EXPECT_EQ(clavis::search::upper_bound(sortedInts, 200), 10); // Beyond last element
+  EXPECT_EQ(clavis::search::upper_bound(sortedInts, -20), 0);   // Before first element
+  EXPECT_EQ(clavis::search::upper_bound(sortedInts, -10), 1);   // Existing element
+  EXPECT_EQ(clavis::search::upper_bound(sortedInts, -7), 1);    // Between elements
+  EXPECT_EQ(clavis::search::upper_bound(sortedInts, 3), 5);     // Between elements
+  EXPECT_EQ(clavis::search::upper_bound(sortedInts, 100), 10);  // Last element
+  EXPECT_EQ(clavis::search::upper_bound(sortedInts, 200), 10);  // Beyond last element
 
   // Test with empty vector
   std::vector<int> empty;
@@ -131,12 +132,13 @@ TEST_F(BinarySearchTest, PredicateSearch) {
   EXPECT_EQ(result1, 10);
 
   // Find the first square number >= 100 in range [0, 20)
-  auto result2 = clavis::search::binary_search_predicate<int>(0, 20, [](int x) { return x * x >= 100; });
+  auto result2 =
+      clavis::search::binary_search_predicate<int>(0, 20, [](int x) { return x * x >= 100; });
   EXPECT_EQ(result2, 10);
 
   // Find the first number that doesn't satisfy any condition
   auto result3 = clavis::search::binary_search_predicate<int>(0, 10, [](int x) { return x > 15; });
-  EXPECT_EQ(result3, 10); // Should return the right boundary
+  EXPECT_EQ(result3, 10);  // Should return the right boundary
 }
 
 /**

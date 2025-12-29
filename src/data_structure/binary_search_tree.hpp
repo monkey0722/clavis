@@ -14,7 +14,7 @@ concept Comparable = std::totally_ordered<T> && std::copyable<T>;
 
 template <Comparable T>
 class BinarySearchTree {
-private:
+ private:
   struct Node {
     T value;
     std::unique_ptr<Node> left;
@@ -25,7 +25,7 @@ private:
   std::unique_ptr<Node> root;
   size_t nodeCount = 0;
 
-public:
+ public:
   BinarySearchTree() = default;
 
   void insert(const T& value) {

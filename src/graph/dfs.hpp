@@ -19,13 +19,11 @@ concept HashableNode = GraphNode<T> && requires(T x) {
 
 template <HashableNode NodeType>
 class DFS {
-private:
+ private:
   using Graph = std::unordered_map<NodeType, std::vector<NodeType>>;
   Graph adjacencyList;
 
-  void logVisit(const NodeType& node) const {
-    std::cout << "Visiting node: " << node << std::endl;
-  }
+  void logVisit(const NodeType& node) const { std::cout << "Visiting node: " << node << std::endl; }
 
   // Helper function for recursive DFS traversal
   void traverseRecursive(const NodeType& node, std::unordered_map<NodeType, bool>& visited,
@@ -44,7 +42,7 @@ private:
     }
   }
 
-public:
+ public:
   void addEdge(const NodeType& from, const NodeType& to) {
     adjacencyList[from].push_back(to);
     // In the case of an isolated point, create an empty adjacent list
@@ -100,7 +98,8 @@ public:
   }
 
   // Find path using DFS (not necessarily the shortest)
-  [[nodiscard]] std::vector<NodeType> findPath(const NodeType& start, const NodeType& target) const {
+  [[nodiscard]] std::vector<NodeType> findPath(const NodeType& start,
+                                               const NodeType& target) const {
     std::stack<NodeType> stack;
     std::unordered_map<NodeType, bool> visited;
     std::unordered_map<NodeType, NodeType> parent;
@@ -161,7 +160,7 @@ public:
     return false;
   }
 
-private:
+ private:
   bool hasCycleUtil(const NodeType& node, std::unordered_map<NodeType, bool>& visited,
                     std::unordered_map<NodeType, bool>& inStack) const {
     visited[node] = true;
@@ -184,7 +183,7 @@ private:
     return false;
   }
 
-public:
+ public:
   // Topological sort (only works for DAGs)
   [[nodiscard]] std::vector<NodeType> topologicalSort() const {
     if (hasCycle()) {
@@ -210,9 +209,9 @@ public:
     return result;
   }
 
-private:
+ private:
   void topologicalSortUtil(const NodeType& node, std::unordered_map<NodeType, bool>& visited,
-                          std::stack<NodeType>& stack) const {
+                           std::stack<NodeType>& stack) const {
     visited[node] = true;
 
     if (auto it = adjacencyList.find(node); it != adjacencyList.end()) {
@@ -227,7 +226,7 @@ private:
     stack.push(node);
   }
 
-public:
+ public:
   [[nodiscard]] size_t countConnectedComponents() const {
     std::unordered_set<NodeType> unvisited;
     for (const auto& [node, _] : adjacencyList) {

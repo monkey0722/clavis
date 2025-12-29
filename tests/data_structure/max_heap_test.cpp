@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 
 class MaxHeapTest : public ::testing::Test {
-protected:
+ protected:
   MaxHeap<int> heap;
 
   void SetUp() override {

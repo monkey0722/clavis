@@ -6,7 +6,7 @@
  * @brief Test fixture for SegmentTree.
  */
 class SegmentTreeTest : public ::testing::Test {
-protected:
+ protected:
   // We can define common setup or data here if needed.
 };
 

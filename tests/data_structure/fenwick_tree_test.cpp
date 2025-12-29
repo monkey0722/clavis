@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 
 class FenwickTreeTest : public ::testing::Test {
-protected:
+ protected:
   // No special setup needed here, but we could create common data if required
 };
 

@@ -19,15 +19,13 @@ concept HashableNode = GraphNode<T> && requires(T x) {
 
 template <HashableNode NodeType>
 class BFS {
-private:
+ private:
   using Graph = std::unordered_map<NodeType, std::vector<NodeType>>;
   Graph adjacencyList;
 
-  void logVisit(const NodeType& node) const {
-    std::cout << "Visiting node: " << node << std::endl;
-  }
+  void logVisit(const NodeType& node) const { std::cout << "Visiting node: " << node << std::endl; }
 
-public:
+ public:
   void addEdge(const NodeType& from, const NodeType& to) {
     adjacencyList[from].push_back(to);
     // In the case of an isolated point, create an empty adjacent list

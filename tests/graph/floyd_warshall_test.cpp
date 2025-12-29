@@ -5,7 +5,7 @@
 #include <limits>
 
 class FloydWarshallTest : public ::testing::Test {
-protected:
+ protected:
   const double INF = std::numeric_limits<double>::infinity();
 };
 

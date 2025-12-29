@@ -45,4 +45,4 @@ void radixSort(std::vector<T>& arr) {
   }
 }
 
-#endif // RADIX_SORT_HPP
+#endif  // RADIX_SORT_HPP
