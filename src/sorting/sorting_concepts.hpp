@@ -3,10 +3,12 @@
 
 #include <concepts>
 
+// clang-format off
 template <typename T>
 concept Sortable = requires(T a, T b) {
   { a < b } -> std::convertible_to<bool>;
 };
+// clang-format on
 
 template <typename T>
 concept Pivotable = Sortable<T> && std::movable<T>;

@@ -18,39 +18,44 @@ void printArray(const std::vector<T>& arr, const std::string& label) {
 }
 
 int main() {
-  std::vector<int> arr = {64, 34, 25, 12, 22, 11, 90};
-  std::vector<int> original = arr;
+  try {
+    std::vector<int> arr = {64, 34, 25, 12, 22, 11, 90};
+    std::vector<int> original = arr;
 
-  printArray(arr, "Original array");
+    printArray(arr, "Original array");
 
-  std::cout << "\nBubble Sort:\n";
-  bubbleSort(arr);
-  printArray(arr, "After sorting");
+    std::cout << "\nBubble Sort:\n";
+    bubbleSort(arr);
+    printArray(arr, "After sorting");
 
-  arr = original;
-  std::cout << "\nQuick Sort:\n";
-  quickSort(arr);
-  printArray(arr, "After sorting");
+    arr = original;
+    std::cout << "\nQuick Sort:\n";
+    quickSort(arr);
+    printArray(arr, "After sorting");
 
-  arr = original;
-  std::cout << "\nMerge Sort:\n";
-  mergeSort(arr);
-  printArray(arr, "After sorting");
+    arr = original;
+    std::cout << "\nMerge Sort:\n";
+    mergeSort(arr);
+    printArray(arr, "After sorting");
 
-  arr = original;
-  std::cout << "\nHeap Sort:\n";
-  heapSort(arr);
-  printArray(arr, "After sorting");
+    arr = original;
+    std::cout << "\nHeap Sort:\n";
+    heapSort(arr);
+    printArray(arr, "After sorting");
 
-  arr = original;
-  std::cout << "\nRadix Sort:\n";
-  radixSort(arr);
-  printArray(arr, "After sorting");
+    arr = original;
+    std::cout << "\nRadix Sort:\n";
+    radixSort(arr);
+    printArray(arr, "After sorting");
 
-  arr = original;
-  std::cout << "\nShell Sort:\n";
-  shellSort(arr);
-  printArray(arr, "After sorting");
+    arr = original;
+    std::cout << "\nShell Sort:\n";
+    shellSort(arr);
+    printArray(arr, "After sorting");
 
-  return 0;
+    return 0;
+  } catch (const std::exception& e) {
+    std::cerr << "Error: " << e.what() << '\n';
+    return 1;
+  }
 }

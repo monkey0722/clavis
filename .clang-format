@@ -1,4 +1,7 @@
 BasedOnStyle: Google
 IndentWidth: 2
-TabWidth: 3
+TabWidth: 2
 ColumnLimit: 100
+RequiresClausePosition: OwnLine
+RequiresExpressionIndentation: OuterScope
+SpacesInContainerLiterals: true

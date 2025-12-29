@@ -12,7 +12,7 @@
 
 template <Mergeable T>
 void merge(std::span<T> arr, size_t left, size_t mid, size_t right) {
-  std::cout << "Merging: left=" << left << " mid=" << mid << " right=" << right << std::endl;
+  std::cout << "Merging: left=" << left << " mid=" << mid << " right=" << right << '\n';
   std::vector<T> temp(right - left + 1);
   size_t i = left, j = mid + 1, k = 0;
 
@@ -39,7 +39,7 @@ void mergeSortImpl(std::span<T> arr, size_t left, size_t right) {
   if (left >= arr.size() || right >= arr.size() || left >= right) {
     return;
   }
-  std::cout << "MergeSort: left=" << left << " right=" << right << std::endl;
+  std::cout << "MergeSort: left=" << left << " right=" << right << '\n';
   size_t mid = left + (right - left) / 2;
   mergeSortImpl(arr, left, mid);
   mergeSortImpl(arr, mid + 1, right);
@@ -48,7 +48,7 @@ void mergeSortImpl(std::span<T> arr, size_t left, size_t right) {
 
 template <Mergeable T>
 void mergeSort(std::vector<T>& arr) {
-  std::cout << "Starting mergeSort with array size: " << arr.size() << std::endl;
+  std::cout << "Starting mergeSort with array size: " << arr.size() << '\n';
   std::span s{arr};
   mergeSortImpl(s, 0, arr.size() - 1);
 }

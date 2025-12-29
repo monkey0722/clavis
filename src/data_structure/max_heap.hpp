@@ -44,10 +44,10 @@ class MaxHeap {
   }
 
   // Returns true if the heap has no elements
-  bool empty() const { return data_.empty(); }
+  [[nodiscard]] bool empty() const { return data_.empty(); }
 
   // Returns the number of elements in the heap
-  std::size_t size() const { return data_.size(); }
+  [[nodiscard]] std::size_t size() const { return data_.size(); }
 
  private:
   std::vector<T> data_;

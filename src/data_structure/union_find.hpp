@@ -49,7 +49,7 @@ class UnionFind {
     if (rx == ry) return;
 
     std::cout << "Uniting groups: " << rx << " and " << ry << " (ranks: " << rank[rx] << ", "
-              << rank[ry] << ")" << std::endl;
+              << rank[ry] << ")\n";
 
     if (rank[rx] < rank[ry]) {
       parent[rx] = ry;

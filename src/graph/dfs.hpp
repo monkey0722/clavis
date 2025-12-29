@@ -12,10 +12,12 @@
 template <typename T>
 concept GraphNode = std::equality_comparable<T> && std::copy_constructible<T>;
 
+// clang-format off
 template <typename T>
 concept HashableNode = GraphNode<T> && requires(T x) {
   { std::hash<T>{}(x) } -> std::convertible_to<std::size_t>;
 };
+// clang-format on
 
 template <HashableNode NodeType>
 class DFS {
@@ -187,7 +189,7 @@ class DFS {
   // Topological sort (only works for DAGs)
   [[nodiscard]] std::vector<NodeType> topologicalSort() const {
     if (hasCycle()) {
-      std::cout << "Graph has a cycle, topological sort not possible" << std::endl;
+      std::cout << "Graph has a cycle, topological sort not possible\n";
       return {};
     }
 

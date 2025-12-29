@@ -2,6 +2,7 @@
 #define SIEVE_HPP
 
 #include <cstdint>
+#include <utility>
 #include <vector>
 
 /**
@@ -51,7 +52,7 @@ std::vector<int64_t> sieve_of_eratosthenes(int64_t n) {
  * @return true if n is prime, false otherwise
  */
 bool is_prime_with_sieve(int64_t n, const std::vector<bool>& sieve_result) {
-  if (n < 0 || n >= static_cast<int64_t>(sieve_result.size())) {
+  if (n < 0 || std::cmp_greater_equal(n, sieve_result.size())) {
     return false;
   }
   return sieve_result[n];
