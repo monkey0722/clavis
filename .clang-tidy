@@ -2,17 +2,44 @@ Checks: >
   -*,
   bugprone-*,
   clang-analyzer-*,
+  misc-*,
   modernize-*,
   performance-*,
+  readability-const-return-type,
+  readability-container-size-empty,
+  readability-make-member-function-const,
+  readability-redundant-member-init,
+  readability-redundant-smartptr-get,
+  readability-redundant-string-cstr,
+  readability-simplify-boolean-expr,
+  readability-static-accessed-through-instance,
+  readability-string-compare,
   cppcoreguidelines-init-variables,
   cppcoreguidelines-prefer-member-initializer,
-  -modernize-use-trailing-return-type,
-  -bugprone-easily-swappable-parameters
+  cppcoreguidelines-slicing,
+  -bugprone-easily-swappable-parameters,
+  -misc-const-correctness,
+  -misc-include-cleaner,
+  -misc-no-recursion,
+  -misc-non-private-member-variables-in-classes,
+  -misc-unused-parameters,
+  -misc-use-anonymous-namespace,
+  -misc-definitions-in-headers,
+  -misc-use-internal-linkage,
+  -modernize-use-trailing-return-type
 
-WarningsAsErrors: ''
+WarningsAsErrors: >
+  bugprone-use-after-move,
+  bugprone-dangling-handle
 
 HeaderFilterRegex: 'src/.*\.(hpp|h)$'
+
+FormatStyle: file
 
 CheckOptions:
   - key: modernize-use-nullptr.NullMacros
     value: 'NULL'
+  - key: performance-move-const-arg.CheckTriviallyCopyableMove
+    value: 'false'
+  - key: misc-non-private-member-variables-in-classes.IgnoreClassesWithAllMemberVariablesBeingPublic
+    value: 'true'

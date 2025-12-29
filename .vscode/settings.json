@@ -4,5 +4,9 @@
   "C_Cpp.default.includePath": [
     "${workspaceFolder}/src"
   ],
-  "C_Cpp.default.intelliSenseMode": "clang-x64"
+  "C_Cpp.default.intelliSenseMode": "clang-x64",
+  "files.associations": {
+    ".clang-tidy": "yaml",
+    ".clang-format": "yaml"
+  }
 }
