@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.25)
 
 project(CLAVIS LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
@@ -57,8 +57,9 @@ target_include_directories(clavis_algorithm_test PRIVATE
 
 target_link_libraries(clavis_algorithm_test clavis_algorithm GTest::GTest GTest::Main)
 
-# Register test
-add_test(NAME AlgorithmTest COMMAND clavis_algorithm_test)
+# Discover and register tests
+include(GoogleTest)
+gtest_discover_tests(clavis_algorithm_test)
 
 # =============================================================================
 # Code Quality Tools
