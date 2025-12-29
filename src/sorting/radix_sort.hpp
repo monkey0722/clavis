@@ -9,7 +9,7 @@
 
 template <std::integral T>
 void radixSort(std::vector<T>& arr) {
-  std::cout << "Starting radixSort with array size: " << arr.size() << std::endl;
+  std::cout << "Starting radixSort with array size: " << arr.size() << '\n';
   if (arr.empty()) {
     return;
   };
@@ -21,7 +21,7 @@ void radixSort(std::vector<T>& arr) {
   std::span s{arr};
 
   for (T exp = 1; max / exp > 0; exp *= 10) {
-    std::cout << "Processing digit position: " << exp << std::endl;
+    std::cout << "Processing digit position: " << exp << '\n';
     std::vector<T> output(s.size());
     std::array<size_t, 10> count{};
 
@@ -41,7 +41,7 @@ void radixSort(std::vector<T>& arr) {
      ** std::ranges::move(output, arr.begin());
      */
     std::move(output.begin(), output.end(), arr.begin());
-    std::cout << "Radix sort complete" << std::endl;
+    std::cout << "Radix sort complete" << '\n';
   }
 }
 

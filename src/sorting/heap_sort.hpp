@@ -10,7 +10,7 @@
 
 template <Heapable T>
 void heapify(std::vector<T>& arr, size_t n, size_t i) {
-  std::cout << "Heapify at index " << i << " with size " << n << std::endl;
+  std::cout << "Heapify at index " << i << " with size " << n << '\n';
   size_t largest = i;
   size_t left = 2 * i + 1;
   size_t right = 2 * i + 2;
@@ -22,7 +22,7 @@ void heapify(std::vector<T>& arr, size_t n, size_t i) {
     largest = right;
   }
   if (largest != i) {
-    std::cout << "Swapping elements at " << i << " and " << largest << std::endl;
+    std::cout << "Swapping elements at " << i << " and " << largest << '\n';
     std::swap(arr[i], arr[largest]);
     heapify(arr, n, largest);
   }
@@ -30,7 +30,7 @@ void heapify(std::vector<T>& arr, size_t n, size_t i) {
 
 template <Heapable T>
 void heapSort(std::vector<T>& arr) {
-  std::cout << "Starting heapSort with array size: " << arr.size() << std::endl;
+  std::cout << "Starting heapSort with array size: " << arr.size() << '\n';
   for (int i = arr.size() / 2 - 1; i >= 0; --i) {
     heapify(arr, arr.size(), i);
   }

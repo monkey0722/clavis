@@ -25,7 +25,7 @@ size_t partition(std::vector<T>& arr, size_t low, size_t high) {
 
 template <Pivotable T>
 void quickSortImpl(std::vector<T>& arr, size_t low, size_t high) {
-  std::cout << "QuickSort: low=" << low << " high=" << high << std::endl;
+  std::cout << "QuickSort: low=" << low << " high=" << high << '\n';
   if (low < high) {
     size_t pi = partition(arr, low, high);
     if (pi > 0) quickSortImpl(arr, low, pi - 1);
@@ -35,7 +35,7 @@ void quickSortImpl(std::vector<T>& arr, size_t low, size_t high) {
 
 template <Pivotable T>
 void quickSort(std::vector<T>& arr) {
-  std::cout << "Starting quickSort with array size: " << arr.size() << std::endl;
+  std::cout << "Starting quickSort with array size: " << arr.size() << '\n';
   if (arr.size() > 1) {
     quickSortImpl(arr, 0, arr.size() - 1);
   }

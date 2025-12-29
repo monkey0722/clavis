@@ -5,8 +5,7 @@
 #include <functional>
 #include <vector>
 
-namespace clavis {
-namespace search {
+namespace clavis::search {
 
 /**
  * @brief Binary search algorithm for finding an element in a sorted array
@@ -118,7 +117,6 @@ T binary_search_predicate(T left, T right, const std::function<bool(T)>& predica
   return left;  // Returns right if no element satisfies the predicate
 }
 
-}  // namespace search
-}  // namespace clavis
+}  // namespace clavis::search
 
 #endif  // BINARY_SEARCH_HPP

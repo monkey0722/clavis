@@ -29,8 +29,8 @@ std::vector<long long> dijkstra(const std::vector<std::vector<Edge>>& graph, int
 
   // Priority queue that always returns the pair with the smallest distance
   using Pi = std::pair<long long, int>;  // (distance, node)
-  std::priority_queue<Pi, std::vector<Pi>, std::greater<Pi>> pq;
-  pq.push({0, start});
+  std::priority_queue<Pi, std::vector<Pi>, std::greater<>> pq;
+  pq.emplace(0, start);
 
   while (!pq.empty()) {
     auto [curDist, u] = pq.top();
@@ -44,7 +44,7 @@ std::vector<long long> dijkstra(const std::vector<std::vector<Edge>>& graph, int
       long long nd = curDist + e.cost;
       if (dist[e.to] > nd) {
         dist[e.to] = nd;
-        pq.push({nd, e.to});
+        pq.emplace(nd, e.to);
       }
     }
   }

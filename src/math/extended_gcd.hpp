@@ -32,14 +32,14 @@ struct ExtGcdResult {
  */
 ExtGcdResult extended_gcd(int64_t a, int64_t b) {
   if (b == 0) {
-    return {a, 1, 0};
+    return {.gcd = a, .x = 1, .y = 0};
   }
 
   auto [g, x1, y1] = extended_gcd(b, a % b);
   int64_t x = y1;
   int64_t y = x1 - (a / b) * y1;
 
-  return {g, x, y};
+  return {.gcd = g, .x = x, .y = y};
 }
 
 /**
@@ -71,7 +71,7 @@ ExtGcdResult extended_gcd_iterative(int64_t a, int64_t b) {
     y0 = temp;
   }
 
-  return {a, x0, y0};
+  return {.gcd = a, .x = x0, .y = y0};
 }
 
 /**

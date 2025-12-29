@@ -36,11 +36,11 @@ int64_t mod_pow(int64_t base, int64_t exp, int64_t mod) {
   while (exp > 0) {
     // If exp is odd, multiply base with result
     if (exp & 1) {
-      result = (__int128_t)result * base % mod;
+      result = static_cast<int64_t>((__int128_t)result * base % mod);
     }
     // exp must be even now
     exp >>= 1;
-    base = (__int128_t)base * base % mod;
+    base = static_cast<int64_t>((__int128_t)base * base % mod);
   }
 
   return result;

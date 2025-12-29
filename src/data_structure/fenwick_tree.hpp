@@ -26,7 +26,7 @@ class FenwickTree {
 
   // Returns the sum of elements in [0..idx]
   // If idx < 0, returns 0
-  int query(std::size_t idx) const {
+  [[nodiscard]] int query(std::size_t idx) const {
     if (idx >= size_) {
       throw std::out_of_range("Index out of range in FenwickTree::query");
     }
@@ -41,7 +41,7 @@ class FenwickTree {
 
   // Returns the sum of elements in [left..right]
   // If left > right, returns 0
-  int rangeQuery(std::size_t left, std::size_t right) const {
+  [[nodiscard]] int rangeQuery(std::size_t left, std::size_t right) const {
     if (left > right) {
       return 0;
     }

@@ -187,7 +187,7 @@ class DFS {
   // Topological sort (only works for DAGs)
   [[nodiscard]] std::vector<NodeType> topologicalSort() const {
     if (hasCycle()) {
-      std::cout << "Graph has a cycle, topological sort not possible" << std::endl;
+      std::cout << "Graph has a cycle, topological sort not possible\n";
       return {};
     }
 

@@ -13,7 +13,7 @@
 template <typename T>
 class SegmentTree {
  private:
-  int n;                      // Number of leaves
+  int n = 1;                  // Number of leaves
   std::vector<T> tree;        // Container to store the segment tree
   std::function<T(T, T)> op;  // Binary operation to merge intervals
   T identity;                 // Identity element for the operation
@@ -46,7 +46,6 @@ class SegmentTree {
       : op(op), identity(identity) {
     // Expand n to the next power of two
     int size = (int)data.size();
-    n = 1;
     while (n < size) n <<= 1;
 
     tree.assign(2 * n, identity);

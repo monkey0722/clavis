@@ -85,8 +85,8 @@ class DisjointSet {
  * @return Vector of edges that form the MST and the total weight of the MST
  */
 std::pair<std::vector<KruskalEdge>, long long> kruskal(int n, std::vector<KruskalEdge>& edges) {
-  // Sort edges by weight
-  std::sort(edges.begin(), edges.end());
+  // Sort edges by weight (NOLINT: ranges::sort incompatible with member operator<)
+  std::sort(edges.begin(), edges.end());  // NOLINT(modernize-use-ranges)
 
   DisjointSet dsu(n);
   std::vector<KruskalEdge> mst;
