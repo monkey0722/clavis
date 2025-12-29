@@ -7,7 +7,7 @@
 /**
  * @brief Concept for types that support modular exponentiation
  */
-// clang-format off (compound requirements formatting unstable across versions)
+// clang-format off
 template <typename T>
 concept ModularArithmetic = std::integral<T> || requires(T a, T b) {
   { a * b } -> std::convertible_to<T>;

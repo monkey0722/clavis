@@ -3,7 +3,7 @@
 
 #include <concepts>
 
-// clang-format off (compound requirements formatting unstable across versions)
+// clang-format off
 template <typename T>
 concept Sortable = requires(T a, T b) {
   { a < b } -> std::convertible_to<bool>;

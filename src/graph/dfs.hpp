@@ -12,7 +12,7 @@
 template <typename T>
 concept GraphNode = std::equality_comparable<T> && std::copy_constructible<T>;
 
-// clang-format off (compound requirements formatting unstable across versions)
+// clang-format off
 template <typename T>
 concept HashableNode = GraphNode<T> && requires(T x) {
   { std::hash<T>{}(x) } -> std::convertible_to<std::size_t>;
