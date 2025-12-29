@@ -12,14 +12,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Install clang-format
         run: sudo apt-get update && sudo apt-get install -y clang-format
 
       - name: Check format
         run: |
-          find src tests -name "*.hpp" -o -name "*.cpp" -o -name "*.h" | \
+          find src tests \( -name "*.hpp" -o -name "*.cpp" -o -name "*.h" \) | \
             xargs clang-format --dry-run --Werror
 
   build-and-test:
@@ -28,12 +28,17 @@ jobs:
     needs: format-check
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
+
+      - name: Setup CMake and Ninja
+        uses: lukka/get-cmake@latest
+        with:
+          cmakeVersion: "~3.31.0"
 
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y cmake build-essential libgtest-dev
+          sudo apt-get install -y libgtest-dev
 
       - name: Configure
         run: cmake --preset ci
