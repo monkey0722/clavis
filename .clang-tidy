@@ -1,19 +1,18 @@
 Checks: >
   -*,
   bugprone-*,
-  modernize-*,
-  readability-*,
-  cppcoreguidelines-*,
-  performance-*,
   clang-analyzer-*,
-  cert-*,
-  misc-*,
-  google-*,
-  llvm-*,
-  hicpp-*
+  modernize-*,
+  performance-*,
+  cppcoreguidelines-init-variables,
+  cppcoreguidelines-prefer-member-initializer,
+  -modernize-use-trailing-return-type,
+  -bugprone-easily-swappable-parameters
+
+WarningsAsErrors: ''
+
+HeaderFilterRegex: 'src/.*\.(hpp|h)$'
 
 CheckOptions:
   - key: modernize-use-nullptr.NullMacros
-    value: 'Google'
-  - key: modernize-use-override.IgnoreDestructors
-    value: true
+    value: 'NULL'

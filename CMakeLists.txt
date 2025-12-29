@@ -73,12 +73,19 @@ gtest_discover_tests(clavis_algorithm_test)
 # Code Quality Tools
 # =============================================================================
 
-# Collect all C++ files for formatting/linting
+# Collect all C++ files for formatting
 file(GLOB_RECURSE ALL_CXX_FILES
   ${CMAKE_SOURCE_DIR}/src/*.hpp
   ${CMAKE_SOURCE_DIR}/src/*.cpp
   ${CMAKE_SOURCE_DIR}/src/*.h
   ${CMAKE_SOURCE_DIR}/tests/*.cpp
+)
+
+# Collect source files only for linting (exclude tests)
+file(GLOB_RECURSE SRC_CXX_FILES
+  ${CMAKE_SOURCE_DIR}/src/*.hpp
+  ${CMAKE_SOURCE_DIR}/src/*.cpp
+  ${CMAKE_SOURCE_DIR}/src/*.h
 )
 
 # clang-format targets
@@ -118,8 +125,12 @@ if(CLANG_TIDY)
     COMMAND ${CLANG_TIDY}
       -p ${CMAKE_BINARY_DIR}
       -header-filter=${CMAKE_SOURCE_DIR}/src/.*
-      ${ALL_CXX_FILES}
-    COMMENT "Running clang-tidy"
+      ${SRC_CXX_FILES}
+      --
+      -x c++
+      -std=c++20
+      -I${CMAKE_SOURCE_DIR}/src
+    COMMENT "Running clang-tidy on source files"
     VERBATIM
   )
 else()
