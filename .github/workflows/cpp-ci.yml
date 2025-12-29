@@ -9,7 +9,7 @@ on:
 jobs:
   format-check:
     name: Format Check
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Check out repository
         uses: actions/checkout@v6
@@ -19,6 +19,7 @@ jobs:
 
       - name: Check format
         run: |
+          clang-format --version
           find src tests \( -name "*.hpp" -o -name "*.cpp" -o -name "*.h" \) | \
             xargs clang-format --dry-run --Werror
 
