@@ -14,18 +14,11 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v6
 
-      - name: Install clang-format-19
-        run: |
-          wget -qO- https://apt.llvm.org/llvm-snapshot.gpg.key | sudo tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc
-          sudo add-apt-repository -y "deb http://apt.llvm.org/noble/ llvm-toolchain-noble-19 main"
-          sudo apt-get update
-          sudo apt-get install -y clang-format-19
-
       - name: Check format
         run: |
-          clang-format-19 --version
+          clang-format --version
           find src tests \( -name "*.hpp" -o -name "*.cpp" -o -name "*.h" \) | \
-            xargs clang-format-19 --dry-run --Werror
+            xargs clang-format --dry-run --Werror
 
   build-and-test:
     name: Build and Test

@@ -7,11 +7,13 @@
 /**
  * @brief Concept for types that support modular exponentiation
  */
+// clang-format off (compound requirements formatting unstable across versions)
 template <typename T>
 concept ModularArithmetic = std::integral<T> || requires(T a, T b) {
   { a * b } -> std::convertible_to<T>;
   { a % b } -> std::convertible_to<T>;
 };
+// clang-format on
 
 /**
  * @brief Fast Exponentiation (Binary Exponentiation) with modulo
