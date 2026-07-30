@@ -31,5 +31,6 @@
 *.out
 *.app
 
-# Debug files
+# CMake build artifacts and local presets
 build/
+CMakeUserPresets.json

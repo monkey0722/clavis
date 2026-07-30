@@ -1,6 +1,5 @@
 {
-  "$schema": "https://cmake.org/cmake/help/latest/_downloads/3e2d73bff478d88a7de0de736ba5e361/schema.json",
-  "version": 8,
+  "version": 6,
   "cmakeMinimumRequired": {
     "major": 3,
     "minor": 25,
@@ -13,8 +12,6 @@
       "generator": "Ninja",
       "binaryDir": "${sourceDir}/build/${presetName}",
       "cacheVariables": {
-        "CMAKE_CXX_STANDARD": "20",
-        "CMAKE_CXX_STANDARD_REQUIRED": "ON",
         "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
       }
     },
@@ -38,8 +35,6 @@
       "name": "ci",
       "displayName": "CI",
       "inherits": "base",
-      "generator": "Unix Makefiles",
-      "binaryDir": "${sourceDir}/build",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug"
       }
@@ -56,8 +51,7 @@
     },
     {
       "name": "ci",
-      "configurePreset": "ci",
-      "jobs": 4
+      "configurePreset": "ci"
     }
   ],
   "testPresets": [
@@ -86,11 +80,7 @@
     {
       "name": "ci",
       "configurePreset": "ci",
-      "inherits": "base",
-      "output": {
-        "outputOnFailure": true,
-        "verbosity": "verbose"
-      }
+      "inherits": "base"
     }
   ],
   "workflowPresets": [

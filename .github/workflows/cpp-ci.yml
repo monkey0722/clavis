@@ -43,18 +43,12 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install --no-install-recommends -y libgtest-dev
+          sudo apt-get install --no-install-recommends -y libgtest-dev ninja-build
 
       - name: Show tool versions
         run: |
           cmake --version
           g++ --version
 
-      - name: Configure
-        run: cmake --preset ci
-
-      - name: Build
-        run: cmake --build --preset ci
-
-      - name: Test
-        run: ctest --preset ci
+      - name: Build and test
+        run: cmake --workflow --preset ci
