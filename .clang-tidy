@@ -32,7 +32,7 @@ WarningsAsErrors: >
   bugprone-use-after-move,
   bugprone-dangling-handle
 
-HeaderFilterRegex: 'src/.*\.(hpp|h)$'
+HeaderFilterRegex: '.*/src/.*\.(hpp|h)$'
 
 FormatStyle: file
 

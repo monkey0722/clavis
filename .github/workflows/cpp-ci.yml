@@ -6,43 +6,52 @@ on:
   pull_request:
     branches: ["main"]
 
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   format-check:
     name: Format Check
     runs-on: ubuntu-24.04
+    timeout-minutes: 5
     steps:
       - name: Check out repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
 
       - name: Check format
         run: |
           clang-format --version
-          find src tests \( -name "*.hpp" -o -name "*.cpp" -o -name "*.h" \) | \
-            xargs clang-format --dry-run --Werror
+          cmake \
+            -DCLANG_FORMAT_EXECUTABLE=clang-format \
+            -DCLAVIS_SOURCE_DIR="$PWD" \
+            -DCLAVIS_FORMAT_CHECK=ON \
+            -P cmake/RunClangFormat.cmake
 
   build-and-test:
     name: Build and Test
     runs-on: ubuntu-24.04
-    needs: format-check
+    timeout-minutes: 15
     steps:
       - name: Check out repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
 
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libgtest-dev
+          sudo apt-get install --no-install-recommends -y libgtest-dev ninja-build
 
       - name: Show tool versions
         run: |
           cmake --version
           g++ --version
 
-      - name: Configure
-        run: cmake --preset ci
-
-      - name: Build
-        run: cmake --build --preset ci
-
-      - name: Test
-        run: ctest --preset ci
+      - name: Build and test
+        run: cmake --workflow --preset ci

@@ -11,7 +11,7 @@ Welcome to Clavis! Here, efficient algorithms and unnecessarily complex C++ code
 | CMake | 3.25+ | `brew install cmake` |
 | Ninja | any | `brew install ninja` |
 | GTest | any | `brew install googletest` |
-| LLVM | any | `brew install llvm` |
+| LLVM | 16+ | `brew install llvm` |
 
 ### Quick Setup (macOS)
 
@@ -39,17 +39,21 @@ ctest --preset debug --verbose
 |--------|-----------|----------|
 | `debug` | Ninja | Local development |
 | `release` | Ninja | Production build |
-| `ci` | Unix Makefiles | GitHub Actions |
+| `ci` | Ninja | GitHub Actions |
+| `quality` | Ninja | Code-quality tools |
 
 ## Code Quality
 
 ```bash
+# Configure code-quality tools without requiring GTest
+cmake --preset quality
+
 # Format
-cmake --build build/debug -t format
+cmake --build --preset format
 
 # Format check
-cmake --build build/debug -t format-check
+cmake --build --preset format-check
 
 # Lint
-cmake --build build/debug -t lint
+cmake --build --preset lint
 ```
