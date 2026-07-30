@@ -27,8 +27,11 @@ jobs:
       - name: Check format
         run: |
           clang-format --version
-          git ls-files -z -- '*.h' '*.hpp' '*.cpp' |
-            xargs -0 --no-run-if-empty clang-format --dry-run --Werror
+          cmake \
+            -DCLANG_FORMAT_EXECUTABLE=clang-format \
+            -DCLAVIS_SOURCE_DIR="$PWD" \
+            -DCLAVIS_FORMAT_CHECK=ON \
+            -P cmake/RunClangFormat.cmake
 
   build-and-test:
     name: Build and Test

@@ -38,6 +38,14 @@
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug"
       }
+    },
+    {
+      "name": "quality",
+      "displayName": "Code Quality",
+      "inherits": "base",
+      "cacheVariables": {
+        "BUILD_TESTING": "OFF"
+      }
     }
   ],
   "buildPresets": [
@@ -52,6 +60,21 @@
     {
       "name": "ci",
       "configurePreset": "ci"
+    },
+    {
+      "name": "format",
+      "configurePreset": "quality",
+      "targets": ["format"]
+    },
+    {
+      "name": "format-check",
+      "configurePreset": "quality",
+      "targets": ["format-check"]
+    },
+    {
+      "name": "lint",
+      "configurePreset": "quality",
+      "targets": ["lint"]
     }
   ],
   "testPresets": [

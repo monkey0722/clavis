@@ -44,21 +44,6 @@ endif()
 # Code Quality Tools
 # =============================================================================
 
-get_target_property(CLAVIS_LIBRARY_SOURCES clavis_algorithm SOURCES)
-get_target_property(CLAVIS_EXAMPLE_SOURCES clavis_sorting_example SOURCES)
-set(CLAVIS_SOURCE_FILES
-  ${CLAVIS_LIBRARY_SOURCES}
-  ${CLAVIS_EXAMPLE_SOURCES}
-)
-
-set(CLAVIS_ALL_CXX_FILES
-  ${CLAVIS_SOURCE_FILES}
-)
-if(BUILD_TESTING)
-  get_target_property(CLAVIS_TEST_SOURCES clavis_algorithm_test SOURCES)
-  list(APPEND CLAVIS_ALL_CXX_FILES ${CLAVIS_TEST_SOURCES})
-endif()
-
 find_program(CLANG_FORMAT clang-format
   HINTS
     $ENV{LLVM_DIR}/bin
@@ -68,19 +53,35 @@ find_program(CLANG_FORMAT clang-format
 )
 if(CLANG_FORMAT)
   add_custom_target(format
-    COMMAND ${CLANG_FORMAT} -i ${CLAVIS_ALL_CXX_FILES}
+    COMMAND ${CMAKE_COMMAND}
+      -DCLANG_FORMAT_EXECUTABLE=${CLANG_FORMAT}
+      -DCLAVIS_SOURCE_DIR=${PROJECT_SOURCE_DIR}
+      -P ${PROJECT_SOURCE_DIR}/cmake/RunClangFormat.cmake
     COMMENT "Running clang-format on all files"
     VERBATIM
   )
 
   add_custom_target(format-check
-    COMMAND ${CLANG_FORMAT} --dry-run --Werror ${CLAVIS_ALL_CXX_FILES}
+    COMMAND ${CMAKE_COMMAND}
+      -DCLANG_FORMAT_EXECUTABLE=${CLANG_FORMAT}
+      -DCLAVIS_SOURCE_DIR=${PROJECT_SOURCE_DIR}
+      -DCLAVIS_FORMAT_CHECK=ON
+      -P ${PROJECT_SOURCE_DIR}/cmake/RunClangFormat.cmake
     COMMENT "Checking code format"
     VERBATIM
   )
 else()
   message(STATUS "clang-format not found. Format targets disabled.")
 endif()
+
+# Lint production targets only; formatting separately covers every C++ file
+# under src/ and tests/, including files not yet registered with a target.
+get_target_property(CLAVIS_LIBRARY_SOURCES clavis_algorithm SOURCES)
+get_target_property(CLAVIS_EXAMPLE_SOURCES clavis_sorting_example SOURCES)
+set(CLAVIS_SOURCE_FILES
+  ${CLAVIS_LIBRARY_SOURCES}
+  ${CLAVIS_EXAMPLE_SOURCES}
+)
 
 find_program(CLANG_TIDY clang-tidy
   HINTS

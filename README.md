@@ -40,16 +40,20 @@ ctest --preset debug --verbose
 | `debug` | Ninja | Local development |
 | `release` | Ninja | Production build |
 | `ci` | Ninja | GitHub Actions |
+| `quality` | Ninja | Code-quality tools |
 
 ## Code Quality
 
 ```bash
+# Configure code-quality tools without requiring GTest
+cmake --preset quality
+
 # Format
-cmake --build build/debug -t format
+cmake --build --preset format
 
 # Format check
-cmake --build build/debug -t format-check
+cmake --build --preset format-check
 
 # Lint
-cmake --build build/debug -t lint
+cmake --build --preset lint
 ```
