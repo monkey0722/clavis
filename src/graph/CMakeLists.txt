@@ -1,4 +1,5 @@
 target_sources(clavis_algorithm PRIVATE
+  bellman_ford.hpp
   bfs.hpp
   dfs.hpp
   dijkstra.hpp
