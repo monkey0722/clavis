@@ -76,7 +76,7 @@ fi
 
 # Run debug build
 echo "Building in debug mode..."
-g++ -std=c++20 -DDEBUG_LOG -g -Wall -Wextra "$SOURCE_FILE" -o "$OUTPUT_FILE"
+g++ -std=c++23 -DDEBUG_LOG -g -Wall -Wextra "$SOURCE_FILE" -o "$OUTPUT_FILE"
 
 # Check build result
 if [ $? -eq 0 ]; then

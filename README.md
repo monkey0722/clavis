@@ -8,10 +8,13 @@ Welcome to Clavis! Here, efficient algorithms and unnecessarily complex C++ code
 
 | Tool | Version | Install (macOS) |
 |------|---------|-----------------|
+| C++ compiler | C++23 support | Xcode Command Line Tools |
 | CMake | 3.25+ | `brew install cmake` |
 | Ninja | any | `brew install ninja` |
 | GTest | any | `brew install googletest` |
-| LLVM | 16+ | `brew install llvm` |
+| LLVM | 17+ | `brew install llvm` |
+
+CI validates the project with GCC 13.
 
 ### Quick Setup (macOS)
 
