@@ -11,7 +11,7 @@ function(clavis_enable_warnings target)
 endfunction()
 
 add_library(clavis_algorithm)
-target_compile_features(clavis_algorithm PUBLIC cxx_std_20)
+target_compile_features(clavis_algorithm PUBLIC cxx_std_23)
 target_include_directories(clavis_algorithm PUBLIC
   ${PROJECT_SOURCE_DIR}/src
 )
@@ -97,7 +97,7 @@ if(CLANG_TIDY)
       ${CLAVIS_SOURCE_FILES}
       --
       -x c++
-      -std=c++20
+      -std=c++23
       -I${PROJECT_SOURCE_DIR}/src
     COMMENT "Running clang-tidy on source files"
     VERBATIM
