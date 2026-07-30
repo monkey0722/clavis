@@ -5,4 +5,6 @@ target_sources(clavis_algorithm PRIVATE
   dijkstra.hpp
   floyd_warshall.hpp
   kruskal.hpp
+  prim.hpp
+  strongly_connected_components.hpp
 )
